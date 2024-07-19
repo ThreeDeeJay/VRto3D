@@ -43,9 +43,9 @@ jobs:
       with:
         name: "${{github.event.repository.name}}_r${{env.CommitCount}}@${{env.CommitHashShort}}"
         path: |
-          "${{github.workspace}}/output/drivers/"
-          "${{github.workspace}}/README.md"
-          "${{github.workspace}}/LICENSE"
+          output/drivers/
+          README.md
+          LICENSE
 
     - name: Compress artifacts
       uses: vimtor/action-zip@v1.1
