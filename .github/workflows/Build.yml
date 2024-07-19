@@ -38,6 +38,15 @@ jobs:
     - name: Build
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
 
+    - name: Upload Installer Artifact to GitHub
+      uses: actions/upload-artifact@v4.3.4
+      with:
+        name: "${{github.event.repository.name}}_r${{env.CommitCount}}@${{env.CommitHashShort}}"
+        path: |
+          "${{github.workspace}}/output/drivers/"
+          "${{github.workspace}}/README.md"
+          "${{github.workspace}}/LICENSE"
+
     - name: Compress artifacts
       uses: vimtor/action-zip@v1.1
       with:
