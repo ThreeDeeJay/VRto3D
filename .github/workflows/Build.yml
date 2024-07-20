@@ -54,7 +54,7 @@ jobs:
         files: "output/${{github.event.repository.name}}.zip"
 
     - name: Extract artifact
-      run: 7z x "output/${{github.event.repository.name}}.zip"
+      run: 7z x "output/${{github.event.repository.name}}.zip" -y
       
     - name: Upload Artifact to GitHub
       uses: actions/upload-artifact@v4.3.4
