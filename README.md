@@ -51,17 +51,25 @@ Windows-only solution currently, but there are other solutions on Linux like Mon
 
 ## Base Installation
 
-- Get a multi-display configuration setup (see notes)
+- A multi-display configuration setup (see notes) will be the most compatible, but single displays can be used. Some mods or games may not work with a single display
 - Install SteamVR
 - Download the [latest release](https://github.com/oneup03/VRto3D/releases/latest) and copy the `vrto3d` folder to your `Steam\steamapps\common\SteamVR\drivers` folder
 - Edit the `Steam\steamapps\common\SteamVR\drivers\vrto3d\resources\settings\default.vrsettings` as needed
-	- Set your window resolution to your full-screen resolution (i.e. 3840x1080 for Full-SbS or 1920x1080 for Half-SbS)
-	- Set your render resolution per eye to what you want. Can save some performance by reducing this if you're running a half-size 3D
+	- Set your window resolution to match your fullscreen resolution (i.e. 3840x1080 for Full-SbS or 1920x1080 for Half-SbS)
+	- Set your render resolution per eye to what you want. Can save some performance by reducing this if you're running a half-size 3D format
 - Run SteamVR at least once to verify that you see a Headset window. This is usually not needed before running games.
 	- The Headset window must be on your primary 3D display
 - Try launching a VR game
-- Drag everything besides the headset view to your second display
-- Make the game's window in focus on your second display for control input to work
+- Multi-Display setups:
+	- Drag everything besides the headset view to your second display
+	- Make the headset window in focus on your primary display
+	- Make the game's window in focus on your second display for control input to work
+- Single Display setup:
+	- Make the headset window in focus on your display
+	- Press `Ctrl+F8` to toggle locking the headset window to the foreground
+	- Use `Alt+Tab` to switch to the game window
+	- If the headset window went completely black, this game isn't compatible in single display mode
+	- To quit, `Alt+Tab` to the SteamVR Status window and close it with `Alt+F4`
 - Adjust Depth with `Ctrl+F3` and `Ctrl+F4`
 - Adjust Convergence with `Ctrl+F5` and `Ctrl+F6`
 - Save all Depth & Convergence settings with `Ctrl+F7`
@@ -97,12 +105,19 @@ Windows-only solution currently, but there are other solutions on Linux like Mon
 	- Some DX12 games are not compatible with these old drivers (crashes)
 	- Having 3DVision enabled will crash DX12 games
 	- Make sure your game runs on old drivers with 3D disabled before attempting to get it working with VRto3D
+	- If you get a black screen while trying to run SteamVR + 3DVision, you may have to hard reset
+	- Only Multi-Display setups will work due to 3DVision needing to always be fullscreen to activate
 - Complete the Base Installation section
-- Modify the window_width and window_height in `Steam\steamapps\common\SteamVR\drivers\vrto3d\resources\settings\default.vrsettings` to match your fullscreen resolution
+- If you want full resolution per eye, enable DSR 4x in Nvidia Control Panel -> Manage 3D Settings
+- Modify the `window_width` and `window_height` in `Steam\steamapps\common\SteamVR\drivers\vrto3d\resources\settings\default.vrsettings` to match your fullscreen resolution
+	- This should match your DSR 4x resolution if you're using DSR
+- Modify the `render_width` and `render_height` to be the resolution you want per eye, can be lower or higher than the window setting
+	- Recommended to set this to your monitors normal non-DSR resolution to avoid the performance hit
 - Download Bo3b's [SbS to 3DVision](https://bo3b.s3.amazonaws.com/SD3D_eng.7z) tool and extract the contents to your `Steam\steamapps\common\SteamVR\bin\win64` folder
 - Enable 3D and Global hack. [3D Fix Manager](https://helixmod.blogspot.com/2017/05/3d-fix-manager.html) can do this
 - Run SteamVR from Steam - you will have to do this before running any game with a 3DVision setup
-- Press `Home` to bring up the ReShade menu and select the SBS `SBS_to_Double.fx` shader and click `Reload`
+- This configuration step should only need to be done once:
+	- Press `Home` to bring up the ReShade menu and select the SBS `SBS_to_Double.fx` shader and click `Reload`
 	- The Headset window has to be in focus for 3DVision to trigger - try clicking on it
 	- May need to press `Ctrl+T` to get 3D to trigger
 	- If it's still not working, try closing SteamVR and trying again
@@ -114,6 +129,7 @@ Windows-only solution currently, but there are other solutions on Linux like Mon
 - Bring SteamVR Headset window into focus on main display
 	- If you get complaints about running in a non-stereo mode, Enable 3D in Nvidia Control Panel again
 - Switch back to the game window on second display and hopefully input works and 3D is still displaying
+	- Changing the game window to windowed mode may help to make sure it doesn't trigger a go-fullscreen event and thus disable 3D on your 3D display
 
 
 ## Notes
