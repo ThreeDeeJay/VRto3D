@@ -107,6 +107,7 @@ Windows-only solution currently, but there are other solutions on Linux like Mon
 	- Make sure your game runs on old drivers with 3D disabled before attempting to get it working with VRto3D
 	- If you get a black screen while trying to run SteamVR + 3DVision, you may have to hard reset
 	- Only Multi-Display setups will work due to 3DVision needing to always be fullscreen to activate
+	- If you run into one-eye issues or other weirdness, try using DDU and reinstalling the driver
 - Complete the Base Installation section
 - If you want full resolution per eye, enable DSR 4x in Nvidia Control Panel -> Manage 3D Settings
 - Modify the `window_width` and `window_height` in `Steam\steamapps\common\SteamVR\drivers\vrto3d\resources\settings\default.vrsettings` to match your fullscreen resolution
